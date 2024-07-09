@@ -1,0 +1,182 @@
+.header {
+  margin-inline: 20px;
+  padding-block: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media screen and (min-width: 650px) {
+    margin-inline: auto;
+    max-width: min(1248px, calc(100% - 2 * 40px));
+  }
+
+  .daytona-logo {
+    transition: opacity 0.6s;
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    svg {
+      height: 26px;
+      width: 117px;
+    }
+  }
+
+  .github-stars {
+    font-family: 'Berkeley Mono', monospace;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 4px;
+    padding: 8px 16px;
+    background: #252525;
+    color: var(--color-primary);
+    transition: opacity 0.6s;
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    svg {
+      height: 18px;
+      width: 18px;
+    }
+  }
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  padding: 96px 0;
+  margin: 0;
+  overflow: hidden;
+
+  @media screen and (min-width: 650px) {
+    padding: 120px 0;
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding: 180px 0;
+  }
+
+  &-background {
+    position: absolute;
+    inset: 0;
+    right: -36vw;
+    left: -36vw;
+    z-index: -2;
+    display: flex;
+    justify-content: center;
+
+    @media screen and (min-width: 650px) {
+      right: auto;
+      left: auto;
+    }
+
+    > svg {
+      height: 100%;
+
+      @media screen and (min-width: 650px) {
+        width: 100vw;
+      }
+
+      > g {
+        > path {
+          opacity: 0;
+        }
+      }
+    }
+
+    &--active {
+      > svg {
+        > g {
+          > :first-child {
+            opacity: 1;
+            transition: opacity 1s ease-in-out 0.01s;
+          }
+
+          @for $i from 1 through 10 {
+            > :nth-child(#{$i * 2}),
+            :nth-child(#{$i * 2 + 1}) {
+              opacity: 1;
+              transition: opacity 1s ease-in-out #{0.2 * ($i)}s;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-inline: 20px;
+
+    @media screen and (min-width: 650px) {
+      margin-inline: auto;
+      max-width: min(1248px, calc(100% - 2 * 40px));
+    }
+
+    &-blur {
+      position: absolute;
+      z-index: -1;
+      background: var(--background);
+      filter: blur(102px);
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      @media screen and (min-width: 1024px) {
+        width: 830px;
+        height: 469px;
+      }
+    }
+
+    &-title {
+      color: var(--color-primary);
+      font-family: 'Berkeley Mono', monospace;
+      font-size: 1.75rem;
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      text-align: center;
+      margin: 0;
+
+      @media screen and (min-width: 650px) {
+        font-size: 2.9375rem;
+      }
+
+      @media screen and (min-width: 1024px) {
+        font-size: 4rem;
+        line-height: 1.2;
+      }
+    }
+
+    &-description {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+      color: var(--color-secondary);
+      text-align: center;
+
+      @media screen and (min-width: 650px) {
+        font-size: 1.25rem;
+      }
+    }
+  }
+}

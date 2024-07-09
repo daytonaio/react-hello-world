@@ -1,0 +1,9 @@
+{
+  "name": "React Hello World",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "root",
+  "postCreateCommand": "yarn",
+  "forwardPorts": [5173]
+}
